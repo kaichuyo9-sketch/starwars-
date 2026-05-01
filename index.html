@@ -2,22 +2,61 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Galactic+ | Star Wars Watch Hub</title><style>
+<title>Galactic+ Watchlist</title><style>
+:root{
+--yellow:#FFE81F;
+--bg:#000;
+}
+
+*{box-sizing:border-box}
+
 body{
 margin:0;
 font-family:Arial, sans-serif;
-background:#0b0b0f;
+background:#000;
 color:white;
 overflow-x:hidden;
 }
 
-/* ===== DISNEY+ STYLE HEADER ===== */
+/* 🌌 BACKGROUND (VADER VS LUKE STYLE) */
+.bg{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-3;
+background:
+linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.95)),
+url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80');
+background-size:cover;
+background-position:center;
+filter:brightness(0.6) contrast(1.2);
+}
+
+.stars{
+position:fixed;
+width:200%;
+height:200%;
+background:radial-gradient(white 1px,transparent 1px);
+background-size:60px 60px;
+animation:move 120s linear infinite;
+opacity:0.2;
+z-index:-2;
+}
+
+@keyframes move{
+from{transform:translateY(0)}
+to{transform:translateY(-1000px)}
+}
+
+/* HEADER */
 .header{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:15px 25px;
-background:rgba(0,0,0,0.7);
+padding:15px 20px;
+background:rgba(0,0,0,0.6);
 backdrop-filter:blur(10px);
 position:sticky;
 top:0;
@@ -25,132 +64,112 @@ z-index:100;
 }
 
 .logo{
-color:#FFE81F;
-font-size:22px;
+color:var(--yellow);
 font-weight:bold;
 letter-spacing:2px;
 }
 
+.nav{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+}
+
 .nav a{
 color:#aaa;
-margin:0 10px;
 text-decoration:none;
-font-size:14px;
+font-size:13px;
 }
-.nav a:hover{color:white;}
+.nav a:hover{color:white}
 
-/* ===== HERO BANNER ===== */
+/* HERO */
 .hero{
-height:300px;
-background:linear-gradient(to right, rgba(0,0,0,0.9), rgba(0,0,0,0.2)),
-url('https://images.unsplash.com/photo-1520975916090-3105956dac38?auto=format&fit=crop&w=1500&q=80');
-background-size:cover;
-background-position:center;
-display:flex;
-flex-direction:column;
-justify-content:center;
-padding:30px;
+padding:40px 20px;
+max-width:1000px;
+margin:auto;
 }
 
 .hero h1{
-font-size:40px;
-color:#FFE81F;
-margin:0;
-}
-.hero p{
-color:#ccc;
-max-width:500px;
+font-size:clamp(24px,5vw,42px);
+color:var(--yellow);
+text-shadow:0 0 20px var(--yellow);
 }
 
-/* ===== ROW STYLE (DISNEY+) ===== */
-.row{
-padding:20px;
-}
-.row h2{
-color:#FFE81F;
-margin-bottom:10px;
-}
+.hero p{color:#ccc;max-width:600px}
 
-.grid{
-display:flex;
-gap:15px;
-overflow-x:auto;
-padding-bottom:10px;
-}
-
-.card{
-min-width:180px;
-background:#1a1a1a;
-border-radius:10px;
-padding:10px;
-transition:0.3s;
-cursor:pointer;
-}
-
-.card:hover{
-transform:scale(1.08);
-background:#222;
-box-shadow:0 0 15px #FFE81F;
-}
-
-.card input{
-transform:scale(1.2);
-accent-color:#FFE81F;
-}
-
-.card label{
-display:block;
-margin-top:8px;
-font-size:14px;
-color:white;
-}
-
-.tag{
-font-size:10px;
-padding:2px 6px;
-border-radius:4px;
-background:#333;
-color:#FFE81F;
-display:inline-block;
-margin-top:5px;
-}
-
-/* ===== PROGRESS BAR ===== */
+/* PROGRESS */
 .progress{
 margin:20px;
+height:18px;
 background:#222;
 border-radius:20px;
 overflow:hidden;
-height:18px;
 }
 
 #bar{
 height:100%;
 width:0%;
 background:linear-gradient(90deg,#FFE81F,#ffb703);
-text-align:center;
-font-size:12px;
 color:black;
 font-weight:bold;
-transition:0.3s;
+font-size:12px;
+text-align:center;
 }
 
-/* ===== STARS BACKGROUND ===== */
-.stars{
-position:fixed;
-width:200%;
-height:200%;
-background:radial-gradient(white 1px, transparent 1px);
-background-size:50px 50px;
-animation:move 120s linear infinite;
-z-index:-1;
-opacity:0.3;
+/* CONTAINER */
+.container{
+max-width:1000px;
+margin:auto;
+padding:15px;
 }
-@keyframes move{
-from{transform:translateY(0)}
-to{transform:translateY(-1000px)}
+
+.phase{
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(10px);
+padding:15px;
+margin-bottom:20px;
+border-radius:12px;
+border:1px solid rgba(255,255,255,0.1);
 }
-</style></head><body><div class="stars"></div><!-- HEADER --><div class="header">
+
+h2{
+color:var(--yellow);
+border-bottom:1px solid #333;
+padding-bottom:5px;
+}
+
+h3{
+color:#4da6ff;
+}
+
+.item{
+display:flex;
+align-items:center;
+padding:8px;
+transition:0.2s;
+flex-wrap:wrap;
+}
+
+.item:hover{background:rgba(255,255,255,0.06)}
+
+input{
+accent-color:var(--yellow);
+transform:scale(1.2);
+}
+
+label{
+margin-left:10px;
+flex:1;
+}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+.header{flex-direction:column;align-items:flex-start}
+.nav{flex-wrap:wrap}
+.item{font-size:14px}
+}
+</style></head><body><div class="bg"></div>
+<div class="stars"></div><div class="header">
 <div class="logo">GALACTIC+</div>
 <div class="nav">
 <a href="#">Home</a>
@@ -158,22 +177,44 @@ to{transform:translateY(-1000px)}
 <a href="#">Series</a>
 <a href="#">Watchlist</a>
 </div>
-</div><!-- HERO --><div class="hero">
-<h1>Star Wars Universe</h1>
-<p>Your cinematic watch tracker — built like Disney+ but for the galaxy far far away.</p>
-</div><!-- PROGRESS --><div class="progress">
+</div><div class="hero">
+<h1>Star Wars Universe Watchlist</h1>
+<p>Complete cinematic tracker — optimized for mobile, tablet, and desktop.</p>
+</div><div class="progress">
 <div id="bar">0%</div>
-</div><!-- ROW 1 --><div class="row">
-<h2>Movies</h2>
-<div class="grid"><div class="card"><input type="checkbox" id="ep4"><label for="ep4">A New Hope</label><div class="tag">Movie</div></div>
-<div class="card"><input type="checkbox" id="ep5"><label for="ep5">Empire Strikes Back</label><div class="tag">Movie</div></div>
-<div class="card"><input type="checkbox" id="ep6"><label for="ep6">Return of the Jedi</label><div class="tag">Movie</div></div></div>
-</div><!-- ROW 2 --><div class="row">
-<h2>Series</h2>
-<div class="grid"><div class="card"><input type="checkbox" id="mando"><label for="mando">Mandalorian</label><div class="tag">Series</div></div>
-<div class="card"><input type="checkbox" id="andor"><label for="andor">Andor</label><div class="tag">Series</div></div>
-<div class="card"><input type="checkbox" id="ahsoka"><label for="ahsoka">Ahsoka</label><div class="tag">Series</div></div></div>
-</div><script>
+</div><div class="container"><!-- PHASE 1 --><div class="phase">
+<h2>Phase 1: The Foundation</h2>
+<div class="item"><input type="checkbox" id="ep4"><label>Episode IV: A New Hope</label></div>
+<div class="item"><input type="checkbox" id="ep5"><label>Episode V: Empire Strikes Back</label></div>
+<div class="item"><input type="checkbox" id="ep6"><label>Episode VI: Return of the Jedi</label></div>
+</div><!-- PHASE 2 --><div class="phase">
+<h2>Phase 2: The Fall</h2>
+<div class="item"><input type="checkbox" id="ep1"><label>Episode I: The Phantom Menace</label></div>
+<div class="item"><input type="checkbox" id="ep2"><label>Episode II: Attack of the Clones</label></div>
+<div class="item"><input type="checkbox" id="cw-movie"><label>The Clone Wars Movie</label></div><h3>The Clone Wars Series</h3>
+<div class="item"><input type="checkbox" id="cw"><label>Seasons 1–7 (including Siege of Mandalore)</label></div><div class="item"><input type="checkbox" id="ep3"><label>Episode III: Revenge of the Sith</label></div>
+</div><!-- PHASE 3 --><div class="phase">
+<h2>Phase 3: Dark Times</h2>
+<div class="item"><input type="checkbox" id="bb"><label>The Bad Batch</label></div>
+<div class="item"><input type="checkbox" id="tj"><label>Tales of the Jedi</label></div>
+<div class="item"><input type="checkbox" id="solo"><label>Solo: A Star Wars Story</label></div>
+<div class="item"><input type="checkbox" id="kenobi"><label>Obi-Wan Kenobi</label></div>
+<div class="item"><input type="checkbox" id="andor"><label>Andor</label></div>
+<div class="item"><input type="checkbox" id="rebels"><label>Star Wars Rebels</label></div>
+<div class="item"><input type="checkbox" id="rogue1"><label>Rogue One</label></div>
+</div><!-- PHASE 4 --><div class="phase">
+<h2>Phase 4: New Republic</h2>
+<div class="item"><input type="checkbox" id="mando"><label>The Mandalorian</label></div>
+<div class="item"><input type="checkbox" id="boba"><label>The Book of Boba Fett</label></div>
+<div class="item"><input type="checkbox" id="ahsoka"><label>Ahsoka</label></div>
+<div class="item"><input type="checkbox" id="skeleton"><label>Skeleton Crew</label></div>
+</div><!-- PHASE 5 --><div class="phase">
+<h2>Phase 5: Legacy</h2>
+<div class="item"><input type="checkbox" id="res"><label>Resistance</label></div>
+<div class="item"><input type="checkbox" id="ep7"><label>Episode VII: The Force Awakens</label></div>
+<div class="item"><input type="checkbox" id="ep8"><label>Episode VIII: The Last Jedi</label></div>
+<div class="item"><input type="checkbox" id="ep9"><label>Episode IX: The Rise of Skywalker</label></div>
+</div></div><script>
 const boxes=document.querySelectorAll("input");
 const bar=document.getElementById("bar");
 
@@ -191,8 +232,8 @@ update();
 
 function update(){
 let total=boxes.length;
-let checked=[...boxes].filter(x=>x.checked).length;
-let p=Math.round((checked/total)*100);
+let done=[...boxes].filter(x=>x.checked).length;
+let p=Math.round((done/total)*100);
 bar.style.width=p+"%";
 bar.innerText=p+"%";
 }
